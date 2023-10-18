@@ -6,15 +6,18 @@ import {
   Routes,
 } from 'react-router-dom';
 
+import reactLogo from '../assets/react.svg';
+import viteLogo from '/vite.svg';
+
 export const Navigation = () => {
   return (
     <BrowserRouter>
       <div className="main-layout">
         <nav>
           <section>
-            <img src="src/assets/react.svg" alt="Vite Logo" height={80} />
+            <img src={reactLogo} alt="Vite Logo" height={80} />
             <span>+</span>
-            <img src="/vite.svg" alt="Vite Logo" height={80} />
+            <img src={viteLogo} alt="Vite Logo" height={80} />
           </section>
 
           <ul>
