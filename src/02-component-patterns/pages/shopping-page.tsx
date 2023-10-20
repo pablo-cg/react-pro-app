@@ -1,7 +1,9 @@
-import { ProductButtons } from '../components/product-buttons';
-import { ProductCard } from '../components/product-card';
-import { ProductImage } from '../components/product-image';
-import { ProductTitle } from '../components/product-title';
+import {
+  ProductButtons,
+  ProductCard,
+  ProductImage,
+  ProductTitle,
+} from '../components';
 
 const product = {
   id: crypto.randomUUID(),
