@@ -5,15 +5,13 @@ import {
   ProductTitle,
 } from '../components';
 
+import { products } from '../data/products';
+import { useShoppingCart } from '../hooks/use-shopping-cart';
 import '../styles/custom-styles.css';
 
-const product = {
-  id: crypto.randomUUID(),
-  title: 'Coffee Mug',
-  img: '/coffee-mug.png',
-};
-
 export const ShoppingPage = () => {
+  const { handleAddProduct, shoppingCart } = useShoppingCart();
+
   return (
     <div>
       <h1>ShoppingPage</h1>
@@ -26,30 +24,58 @@ export const ShoppingPage = () => {
           // height: '100%',
         }}
       >
-        <ProductCard product={product} className="bg-dark text-white">
-          <ProductCard.Image className="custom-image" />
-          <ProductCard.Title className="font-bold" />
-          <ProductCard.Buttons className="custom-buttons" />
-        </ProductCard>
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            className="bg-dark text-white"
+            value={shoppingCart?.[product.id]?.quantity || 0}
+            onChange={handleAddProduct}
+          >
+            <ProductImage className="custom-image" />
+            <ProductTitle className="font-bold" />
+            <ProductButtons className="custom-buttons" />
+          </ProductCard>
+        ))}
+      </div>
 
-        <ProductCard product={product} className="bg-dark text-white">
-          <ProductImage className="custom-image" />
-          <ProductTitle className="font-bold" />
-          <ProductButtons className="custom-buttons" />
-        </ProductCard>
+      <div className="shopping-card">
+        {/* Forma 1 */}
+        {/* {Object.values(shoppingCart).map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            className="bg-dark text-white"
+            style={{ width: '100px' }}
+            value={product.quantity}
+            onChange={handleAddProduct}
+          >
+            <ProductImage className="custom-image" />
+            <ProductButtons
+              className="custom-buttons"
+              style={{ display: 'flex', justifyContent: 'center' }}
+            />
+          </ProductCard>
+        ))} */}
 
-        <ProductCard
-          product={product}
-          style={{
-            backgroundColor: '#70d1d8',
-          }}
-        >
-          <ProductImage
-            style={{ boxShadow: '10px 10px 10px rgba(0,0,0,0.2)' }}
-          />
-          <ProductTitle style={{ fontWeight: 'bold' }} />
-          <ProductButtons style={{ display: 'flex', justifyContent: 'end' }} />
-        </ProductCard>
+        {/* Forma 2 */}
+        {shoppingCart &&
+          Object.entries(shoppingCart).map(([key, product]) => (
+            <ProductCard
+              key={key}
+              product={product}
+              className="bg-dark text-white"
+              style={{ width: '100px' }}
+              value={product.quantity}
+              onChange={handleAddProduct}
+            >
+              <ProductImage className="custom-image" />
+              <ProductButtons
+                className="custom-buttons"
+                style={{ display: 'flex', justifyContent: 'center' }}
+              />
+            </ProductCard>
+          ))}
       </div>
     </div>
   );
