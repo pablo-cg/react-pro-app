@@ -8,31 +8,14 @@ export const useShoppingCart = () => {
 
   function handleAddProduct({ product, quantity }: onChangeArgs) {
     setShoppingCard((currentCart) => {
-      const productInCart: ProductInCart = currentCart[product.id] || {
-        ...product,
-        quantity: 0,
-      };
-
-      if (Math.max(productInCart.quantity + quantity, 0) > 0) {
-        productInCart.quantity += quantity;
-
-        return {
-          ...currentCart,
-          [product.id]: productInCart,
-        };
+      if (!quantity) {
+        const { [product.id]: deletedProduct, ...cart } = currentCart;
+        return cart;
       }
-
-      const { [product.id]: deletedProduct, ...cart } = currentCart;
-      return cart;
-
-      // if (!quantity) {
-      //   const { [product.id]: deletedProduct, ...cart } = currentCart;
-      //   return cart;
-      // }
-      // return {
-      //   ...currentCart,
-      //   [product.id]: { ...product, quantity },
-      // };
+      return {
+        ...currentCart,
+        [product.id]: { ...product, quantity },
+      };
     });
   }
   return { shoppingCart, handleAddProduct };
