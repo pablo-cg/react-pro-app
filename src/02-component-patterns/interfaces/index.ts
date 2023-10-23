@@ -10,9 +10,10 @@ export interface Product {
 }
 
 export interface ProductContextType {
-  increaseBy: (value: number) => void;
-  counter: number;
+  quantity: number;
+  maxQuantity?: number;
   product: Product;
+  increaseBy: (value: number) => void;
 }
 
 export interface ProductCardHoc {
@@ -29,4 +30,18 @@ export interface onChangeArgs {
 
 export interface ProductInCart extends Product {
   quantity: number;
+}
+
+export interface InitialValues {
+  quantity?: number;
+  maxQuantity?: number;
+}
+
+export interface ProductCardHandlers {
+  isMaxQuantity: boolean;
+  maxQuantity?: number;
+  product: Product;
+  quantity: number;
+  increaseBy: (value: number) => void;
+  reset: () => void;
 }
