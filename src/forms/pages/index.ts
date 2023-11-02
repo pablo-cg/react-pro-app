@@ -1,0 +1,5 @@
+export { FormikAbstractPage } from './formik-abstract-page'
+export { FormikBasicPage } from './formik-basic-page'
+export { FormikComponentsPage } from './formik-components-page'
+export { FormikYupPage } from './formik-yup-page'
+export { RegisterPage } from './register-page'
