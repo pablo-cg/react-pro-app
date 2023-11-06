@@ -1,0 +1,70 @@
+[
+  {
+    "type": "input",
+    "name": "first_name",
+    "placeholder": "John",
+    "label": "First Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "min",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "type": "input",
+    "name": "last_name",
+    "placeholder": "Doe",
+    "label": "Last Name",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "john@doe.com",
+    "label": "Email",
+    "value": "",
+    "validations": [
+      {
+        "type": "required"
+      },
+      {
+        "type": "email"
+      }
+    ]
+  },
+  {
+    "type": "select",
+    "name": "favorite_game",
+    "label": "Favorite Game",
+    "value": "",
+    "options": [
+      {
+        "id": "re4",
+        "label": "Resident Evil 4"
+      },
+      {
+        "id": "ssb",
+        "label": "Super Smash Bros"
+      },
+      {
+        "id": "gow",
+        "label": "God of War"
+      }
+    ],
+    "validations": [
+      {
+        "type": "required"
+      }
+    ]
+  }
+]

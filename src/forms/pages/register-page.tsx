@@ -1,16 +1,17 @@
 import { FormEvent } from 'react'
 import { useForm } from '../hooks/use-form'
+
 import '../styles/styles.css'
 
 export const RegisterPage = () => {
-  const { onChange, formData, resetForm } = useForm({
+  const { resetForm, formData, onChange } = useForm({
     name: '',
     email: '',
     password: '',
     confirm_password: '',
   })
 
-  const { confirm_password, email, name, password } = formData
+  const { confirm_password, email, name, password } = formData!
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
